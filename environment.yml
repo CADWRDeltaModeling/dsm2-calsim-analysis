@@ -1,0 +1,17 @@
+name: dsm2-calsim-analysis
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python>=3.8
+  - pandas
+  - numpy
+  - panel
+  - pyyaml
+  - diskcache
+  - plotly
+  - kaleido
+  - pyhecdss
+  - pip
+  - pip:
+      - -e .

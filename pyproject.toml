@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=64.0", "wheel", "setuptools_scm>=7.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+write_to = "dsm2_calsim_analysis/_version.py"
+version_scheme = "guess-next-dev"
+local_scheme = "node-and-date"
+fallback_version = "0.0.1"
+
+[project]
+name = "dsm2-calsim-analysis"
+dynamic = ["version"]
+description = "DSM2 and CalSim analysis tools with notebook plotting utilities"
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+authors = [
+    {name = "Kijin Nam", email = "knam@water.ca.gov"},
+    {name = "Nicky Sandhu", email = "psandhu@water.ca.gov"},
+]
+keywords = ["dsm2", "calsim", "analysis", "hydrology", "delta"]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3.8",
+]
+dependencies = [
+    "pandas",
+    "numpy",
+    "pyhecdss",
+    "panel",
+    "pyyaml",
+    "diskcache",
+    "plotly",
+    "kaleido",
+]
+
+[project.scripts]
+dsm2-calsim-analysis = "dsm2_calsim_analysis.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/CADWRDeltaModeling/dsm2-calsim-analysis"
+
+[tool.setuptools]
+zip-safe = false
+include-package-data = true
+packages = {find = {include = ["dsm2_calsim_analysis", "dsm2_calsim_analysis.*"]}}
+
+[tool.setuptools.package-data]
+dsm2_calsim_analysis = ["data/info/*.csv"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "ex_*.py"]
+collect_ignore = ["setup.py"]
+addopts = "--doctest-modules"
