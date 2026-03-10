@@ -1,17 +1,20 @@
 name: dsm2-calsim-analysis
 channels:
   - conda-forge
+  - cadwr-dms
   - defaults
 dependencies:
-  - python>=3.8
-  - pandas
-  - numpy
-  - panel
+  - python<3.14
+  - click
   - pyyaml
+  - numpy
+  - netcdf4
+  - pandas
   - diskcache
+  - panel
   - plotly
-  - kaleido
   - pyhecdss
   - pip
   - pip:
+      - kaleido
       - -e .
